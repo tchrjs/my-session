@@ -1,5 +1,4 @@
 import BottomBar from "./components/bottombar";
-import NavBar from "./components/navbar";
 import "./globals.css";
 
 export const metadata = {
@@ -11,7 +10,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={"antialiased"}>
-        <NavBar />
         {children}
         <BottomBar />
       </body>
