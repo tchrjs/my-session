@@ -7,6 +7,19 @@ import { FiPlus } from "react-icons/fi";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdArrowForwardIos } from "react-icons/md";
 
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+
+import { Button } from "@/components/ui/button";
+
 export default function Page() {
   const [routines, setRoutines] = useState([
     { title: "Bro Split Workout" },
@@ -49,14 +62,31 @@ export default function Page() {
         {/* routines */}
         <div className="w-full h-full flex flex-col items-center gap-4 mt-4">
           {routines.map((routine, i) => (
-            <div
-              key={i}
-              className="w-full p-3 bg-neutral-900 flex items-center"
-            >
-              <div className="w-5/6  text-neutral-400">{routine.title}</div>
-              <div className="w-1/6 text-blue-400 flex justify-end">
-                <MdArrowForwardIos />
-              </div>
+            <div key={i} className="w-full p-3 bg-neutral-900">
+              <Drawer direction="right">
+                <DrawerTrigger className="w-full flex items-center">
+                  <div className="w-5/6 text-neutral-400 flex justify-start">
+                    {routine.title}
+                  </div>
+                  <div className="w-1/6 text-blue-400 flex justify-end">
+                    <MdArrowForwardIos />
+                  </div>
+                </DrawerTrigger>
+                <DrawerContent className="h-full">
+                  <DrawerHeader>
+                    <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                    <DrawerDescription>
+                      This action cannot be undone.
+                    </DrawerDescription>
+                  </DrawerHeader>
+                  <DrawerFooter>
+                    <Button>Submit</Button>
+                    <DrawerClose>
+                      <Button variant="outline">Cancel</Button>
+                    </DrawerClose>
+                  </DrawerFooter>
+                </DrawerContent>
+              </Drawer>
             </div>
           ))}
         </div>
