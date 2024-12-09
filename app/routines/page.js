@@ -7,7 +7,6 @@ export default function Page() {
     { title: "Chest and Triceps", notes: "" },
     { title: "Back and Biceps", notes: "" },
     { title: "Legs", notes: "" },
-    { title: "Abs", notes: "" },
   ]);
 
   return (
