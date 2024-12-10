@@ -18,7 +18,14 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import { Button } from "@/components/ui/button";
+import { FaDumbbell, FaWalking } from "react-icons/fa";
 
 export default function Page() {
   const [routines, setRoutines] = useState([
@@ -31,16 +38,31 @@ export default function Page() {
   return (
     <div className="flex flex-col gap-4">
       {/* routine top bar */}
-      <nav className="sticky top-0 w-full h-12 p-2 z-10 flex items-center justify-center">
+      <nav className="sticky top-0 w-full h-12 p-4 z-10 flex items-center justify-center">
         <div className="w-1/3 flex justify-start"></div>
         <div className="w-1/3 flex justify-center">Routines</div>
         <div className="w-1/3 flex justify-end">
-          <FiPlus
-            className="scale-125"
-            onClick={() => {
-              setDropDownActive(!isDropDownActive);
-            }}
-          />
+          <Popover>
+            <PopoverTrigger>
+              <FiPlus className="scale-125" />
+            </PopoverTrigger>
+            <PopoverContent className="w-52 flex flex-col bg-neutral-800 -translate-x-2 translate-y-4">
+              <div
+                className={`w-full flex p-2 items-center opacity-50 hover:opacity-100 border-b-[1px] border-neutral-500`}
+              >
+                <div className="w-5/6">Create a routine</div>
+                <div className="w-1/6 flex justify-end">
+                  <FaWalking />
+                </div>
+              </div>
+              <div className="flex p-2 items-center opacity-50 hover:opacity-100">
+                <div className="w-5/6">Create a workout</div>
+                <div className="w-1/6 flex justify-end">
+                  <FaDumbbell />
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </nav>
       {/* routine content */}
@@ -74,16 +96,11 @@ export default function Page() {
                 </DrawerTrigger>
                 <DrawerContent className="h-full">
                   <DrawerHeader>
-                    <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-                    <DrawerDescription>
-                      This action cannot be undone.
-                    </DrawerDescription>
+                    <DrawerTitle>{routine.title}</DrawerTitle>
+                    <DrawerDescription></DrawerDescription>
                   </DrawerHeader>
                   <DrawerFooter>
-                    <Button>Submit</Button>
-                    <DrawerClose>
-                      <Button variant="outline">Cancel</Button>
-                    </DrawerClose>
+                    <DrawerClose></DrawerClose>
                   </DrawerFooter>
                 </DrawerContent>
               </Drawer>
