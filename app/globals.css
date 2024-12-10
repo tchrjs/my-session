@@ -7,20 +7,16 @@
   --bar-foreground: #f7f7f7;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-nav {
-  color: var(--bar-foreground);
-  background: var(--bar-background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
+nav,
 footer {
   color: var(--bar-foreground);
   background: var(--bar-background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Raleway;
+}
+
+main {
+  color: #c9c9c9;
+  font-family: Raleway;
 }
 
 @layer base {
@@ -86,4 +82,9 @@ footer {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url("../public/fonts/Raleway-Regular.ttf");
 }
