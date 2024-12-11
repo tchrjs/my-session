@@ -45,7 +45,7 @@ export default function Page() {
                     <MdArrowForwardIos />
                   </div>
                 </DrawerTrigger>
-                <DrawerContent className="h-full">
+                <DrawerContent className="h-full bg-neutral-800">
                   <DrawerHeader>
                     <DrawerTitle>{routine.title}</DrawerTitle>
                     <DrawerDescription></DrawerDescription>
