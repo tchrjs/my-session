@@ -12,7 +12,7 @@ const PageLink = ({ ...props }) => (
   <Link href={props.href}>
     <div
       className={`flex flex-col justify-center items-center ${
-        props.currentPath === props.href ? "text-green-400" : ""
+        props.currentPath === props.href ? "text-purple-400" : ""
       }`}
     >
       <div>{props.icon}</div>
