@@ -11,11 +11,11 @@ import { RiCalendarTodoFill } from "react-icons/ri";
 const PageLink = ({ ...props }) => (
   <Link href={props.href}>
     <div
-      className={`flex flex-col justify-center items-center ${
+      className={`flex flex-col justify-center items-center gap-1 ${
         props.currentPath === props.href ? "text-purple-400" : ""
       }`}
     >
-      <div>{props.icon}</div>
+      <div className="scale-125">{props.icon}</div>
       <div className="text-xs">{props.title}</div>
     </div>
   </Link>

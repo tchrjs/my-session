@@ -20,10 +20,6 @@ main {
   font-family: Raleway;
 }
 
-::selection {
-  background-color: transparent;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;

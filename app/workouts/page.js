@@ -12,9 +12,9 @@ export default function Page() {
   ]);
 
   const [sets, setSets] = useState([
-    { name: "Set 1" },
-    { name: "Set 2" },
-    { name: "Set 3" },
+    { name: "set 1" },
+    { name: "set 2" },
+    { name: "set 3" },
   ]);
 
   return (
