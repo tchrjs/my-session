@@ -21,11 +21,11 @@ const PageLink = ({ ...props }) => (
   </Link>
 );
 
-export default function BottomBar() {
+export default function BottomNav() {
   const currentPath = usePathname();
 
   return (
-    <footer className="fixed bottom-0 w-full h-20 flex justify-center items-center p-4">
+    <nav className="fixed bottom-0 w-full h-20 flex justify-center items-center p-4">
       <div className="w-full h-full flex justify-around items-start">
         <PageLink
           href={"/"}
@@ -52,6 +52,6 @@ export default function BottomBar() {
           currentPath={currentPath}
         />
       </div>
-    </footer>
+    </nav>
   );
 }

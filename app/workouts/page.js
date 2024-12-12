@@ -1,27 +1,20 @@
 "use client";
 
 import { useState } from "react";
-
-// svgs
 import { LiaSearchSolid } from "react-icons/lia";
-import { FiPlus } from "react-icons/fi";
-
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
+import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 
 export default function Page() {
   const [workouts, setWorkouts] = useState([
     { title: "Lat Pull Downs" },
     { title: "Assisted Pull-Ups" },
     { title: "Incline Dumbbell Curls" },
+  ]);
+
+  const [sets, setSets] = useState([
+    { name: "Set 1" },
+    { name: "Set 2" },
+    { name: "Set 3" },
   ]);
 
   return (
@@ -31,20 +24,7 @@ export default function Page() {
         <div className="w-1/3 flex justify-start"></div>
         <div className="w-1/3 flex justify-center">Workouts</div>
         <div className="w-1/3 flex justify-end">
-          <Drawer direction="bottom">
-            <DrawerTrigger>
-              <FiPlus className="scale-125" />
-            </DrawerTrigger>
-            <DrawerContent className="h-[90%] bg-neutral-800">
-              <DrawerHeader>
-                <DrawerTitle>Workout</DrawerTitle>
-                <DrawerDescription></DrawerDescription>
-              </DrawerHeader>
-              <DrawerFooter>
-                <DrawerClose></DrawerClose>
-              </DrawerFooter>
-            </DrawerContent>
-          </Drawer>
+          <WorkoutDrawer sets={sets} />
         </div>
       </nav>
       {/* routine content */}
@@ -55,11 +35,7 @@ export default function Page() {
             className="w-full px-8 py-1 rounded-lg bg-neutral-900"
             placeholder="search"
           />
-          <div
-            className="absolute inset-y-0 px-2
-                    flex items-center 
-                    pointer-events-none"
-          >
+          <div className="absolute inset-y-0 px-2 flex items-center">
             <LiaSearchSolid />
           </div>
         </div>
