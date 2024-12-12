@@ -4,7 +4,7 @@ export default function manifest() {
     short_name: "My Session",
     display: "standalone",
     background_color: "#212121",
-    theme_color: "#f7f7f7",
+    theme_color: "#212121",
     icons: [
       {
         src: "/favicon/web-app-manifest-192x192.png",
