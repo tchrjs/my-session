@@ -51,8 +51,11 @@ export default function WorkoutDrawer({ ...props }) {
               </div>
             </div>
             <div className="flex flex-col gap-1">
-              {props.sets.map((set) => (
-                <div className="bg-neutral-800 text-neutral-400 rounded-lg">
+              {props.sets.map((set, i) => (
+                <div
+                  key={i}
+                  className="bg-neutral-800 text-neutral-400 rounded-lg"
+                >
                   <input
                     type="text"
                     className="p-2 w-full bg-transparent text-neutral-400 text-sm"
