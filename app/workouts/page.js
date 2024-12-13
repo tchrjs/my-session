@@ -17,6 +17,11 @@ export default function Page() {
     { name: "set 3" },
   ]);
 
+  const handleWorkoutCreate = (event) => {
+    console.log("Workout Created ");
+    console.log(event);
+  };
+
   return (
     <div className="flex flex-col gap-4">
       {/* top bar */}
@@ -24,7 +29,7 @@ export default function Page() {
         <div className="w-1/3 flex justify-start"></div>
         <div className="w-1/3 flex justify-center">Workouts</div>
         <div className="w-1/3 flex justify-end">
-          <WorkoutDrawer sets={sets} />
+          <WorkoutDrawer sets={sets} onWorkoutCreate={handleWorkoutCreate} />
         </div>
       </nav>
       {/* routine content */}
