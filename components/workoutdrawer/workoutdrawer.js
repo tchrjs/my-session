@@ -5,6 +5,7 @@ import { FiPlus } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
 
 import { Input } from "../ui/input";
+import SetList from "./components/setlist";
 import { Separator } from "@/components/ui/separator";
 
 import {
@@ -26,15 +27,7 @@ import {
 
 export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
   const [hasType, setHasType] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    type: "",
-  });
-  const [sets, setSets] = useState([
-    { name: "set 1" },
-    { name: "set 2" },
-    { name: "set 3" },
-  ]);
+  const [formData, setFormData] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,6 +49,7 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
     setFormData({
       name: "",
       type: "",
+      sets: [],
     });
   };
 
@@ -83,7 +77,6 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
               Create
             </button>
           </DrawerHeader>
-
           {/* input workout name */}
           <div className="flex flex-col gap-4 p-4 pl-2 overflow-y-scroll">
             <div>
@@ -93,6 +86,7 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
                   className="w-full bg-neutral-800 text-sm"
                   name="name"
                   onChange={handleChange}
+                  required={true}
                 />
               </div>
             </div>
@@ -115,26 +109,10 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
                 </SelectContent>
               </Select>
             </div>
-            {/* sets */}
+            {/* input workout sets and reps or time */}
             <div className={`${hasType ? "" : "hidden"}`}>
               <Separator />
-              <div className="w-full px-2 py-2 flex items-center">
-                <div className="w-full">sets</div>
-                <div className="w-full flex justify-end">
-                  <FiPlus className="scale-125" />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1">
-                {sets.map((set, i) => (
-                  <div key={i} className="bg-neutral-800 text-neutral-400">
-                    <input
-                      type="text"
-                      className="p-2 w-full bg-transparent text-neutral-400 text-sm"
-                      placeholder={set.name}
-                    />
-                  </div>
-                ))}
-              </div>
+              <SetList type={formData.type} onChange={handleChange} />
             </div>
           </div>
         </form>

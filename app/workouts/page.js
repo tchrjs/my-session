@@ -5,14 +5,11 @@ import { LiaSearchSolid } from "react-icons/lia";
 import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 
 export default function Page() {
-  const [workouts, setWorkouts] = useState([
-    { name: "Lat Pull Downs" },
-    { name: "Assisted Pull-Ups" },
-    { name: "Incline Dumbbell Curls" },
-  ]);
+  const [workouts, setWorkouts] = useState([]);
 
   const handleWorkoutCreate = (event) => {
     setWorkouts([...workouts, event]);
+    console.log(event);
   };
 
   return (
