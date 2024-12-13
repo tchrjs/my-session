@@ -1,7 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
+
+import { Input } from "../ui/input";
+import { Separator } from "@/components/ui/separator";
 
 import {
   Drawer,
@@ -11,7 +15,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Separator } from "@/components/ui/separator";
+
 import {
   Select,
   SelectContent,
@@ -19,38 +23,52 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "../ui/input";
-import { useState } from "react";
 
-export default function WorkoutDrawer({ onWorkoutCreate, ...props }) {
+export default function WorkoutDrawer({
+  onWorkoutCreate = () => {},
+  ...props
+}) {
   const [hasType, setHasType] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     type: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    if (name === "type") setHasType(value !== "");
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    if (onWorkoutCreate) onWorkoutCreate(formData);
+    onWorkoutCreate(formData);
+    document.getElementById("workoutdrawerclose").click();
+  };
+
+  const handleDrawerClose = () => {
+    setHasType(false);
+    setFormData({
+      name: "",
+      type: "",
+    });
   };
 
   return (
-    <Drawer direction="bottom" onClose={() => setHasType(false)}>
+    <Drawer direction="bottom" onClose={handleDrawerClose}>
       <DrawerTrigger>
         <FiPlus className="scale-125" />
       </DrawerTrigger>
       <DrawerContent className="h-[90%] bg-neutral-900 rounded-t-lg overflow-hidden">
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} on>
           <DrawerHeader className="flex w-full justify-between items-center bg-neutral-800">
-            <DrawerClose className="w-1/3 flex justify-start">
+            <DrawerClose
+              id="workoutdrawerclose"
+              className="w-1/3 flex justify-start"
+            >
               <CgClose />
             </DrawerClose>
             <DrawerTitle className="w-1/3 flex justify-center">
@@ -71,6 +89,7 @@ export default function WorkoutDrawer({ onWorkoutCreate, ...props }) {
               <div className="relative">
                 <Input
                   className="w-full bg-neutral-800 text-sm"
+                  name="name"
                   onChange={handleChange}
                 />
               </div>
@@ -78,14 +97,19 @@ export default function WorkoutDrawer({ onWorkoutCreate, ...props }) {
             {/* input workout type */}
             <div>
               <div className="w-full px-2">type</div>
-              <Select onValueChange={() => setHasType(true)} required={true}>
+              <Select
+                onValueChange={(value) =>
+                  handleChange({ target: { name: "type", value: value } })
+                }
+                required={true}
+              >
                 <SelectTrigger className="w-full bg-neutral-800">
                   <SelectValue placeholder="select workout type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="weighted">Weighted</SelectItem>
-                  <SelectItem value="bodyweighted">Body Weighted</SelectItem>
-                  <SelectItem value="timed">Timed</SelectItem>
+                  <SelectItem value="weighted">weighted</SelectItem>
+                  <SelectItem value="bodyweighted">body-weighted</SelectItem>
+                  <SelectItem value="timed">timed</SelectItem>
                 </SelectContent>
               </Select>
             </div>
