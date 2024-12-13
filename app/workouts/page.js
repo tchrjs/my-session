@@ -6,20 +6,13 @@ import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 
 export default function Page() {
   const [workouts, setWorkouts] = useState([
-    { title: "Lat Pull Downs" },
-    { title: "Assisted Pull-Ups" },
-    { title: "Incline Dumbbell Curls" },
-  ]);
-
-  const [sets, setSets] = useState([
-    { name: "set 1" },
-    { name: "set 2" },
-    { name: "set 3" },
+    { name: "Lat Pull Downs" },
+    { name: "Assisted Pull-Ups" },
+    { name: "Incline Dumbbell Curls" },
   ]);
 
   const handleWorkoutCreate = (event) => {
-    console.log("Workout Created ");
-    console.log(event);
+    setWorkouts([...workouts, event]);
   };
 
   return (
@@ -29,7 +22,7 @@ export default function Page() {
         <div className="w-1/3 flex justify-start"></div>
         <div className="w-1/3 flex justify-center">Workouts</div>
         <div className="w-1/3 flex justify-end">
-          <WorkoutDrawer sets={sets} onWorkoutCreate={handleWorkoutCreate} />
+          <WorkoutDrawer onWorkoutCreate={handleWorkoutCreate} />
         </div>
       </nav>
       {/* routine content */}
@@ -49,7 +42,7 @@ export default function Page() {
           {workouts.map((workout, i) => (
             <div key={i} className="w-full ">
               <div className="w-full flex items-center bg-neutral-800 p-2">
-                <div className="w-full flex justify-start">{workout.title}</div>
+                <div className="w-full flex justify-start">{workout.name}</div>
               </div>
             </div>
           ))}

@@ -24,15 +24,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export default function WorkoutDrawer({
-  onWorkoutCreate = () => {},
-  ...props
-}) {
+export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
   const [hasType, setHasType] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     type: "",
   });
+  const [sets, setSets] = useState([
+    { name: "set 1" },
+    { name: "set 2" },
+    { name: "set 3" },
+  ]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -123,7 +125,7 @@ export default function WorkoutDrawer({
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                {props.sets.map((set, i) => (
+                {sets.map((set, i) => (
                   <div key={i} className="bg-neutral-800 text-neutral-400">
                     <input
                       type="text"
