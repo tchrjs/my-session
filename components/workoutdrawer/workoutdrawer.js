@@ -77,10 +77,10 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
               Create
             </button>
           </DrawerHeader>
-          {/* input workout name */}
-          <div className="flex flex-col gap-4 p-4 pl-2 overflow-y-scroll">
+          <div className="flex flex-col gap-2 py-2 px-2 overflow-y-scroll">
+            {/* input workout name */}
             <div>
-              <div className="w-full px-2">name</div>
+              <div className="w-full px-2 py-1">name</div>
               <div className="relative">
                 <Input
                   className="w-full bg-neutral-800 text-sm"
@@ -92,7 +92,7 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
             </div>
             {/* input workout type */}
             <div>
-              <div className="w-full px-2">type</div>
+              <div className="w-full px-2 py-1">type</div>
               <Select
                 onValueChange={(value) =>
                   handleChange({ target: { name: "type", value: value } })
@@ -109,9 +109,11 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
                 </SelectContent>
               </Select>
             </div>
+            <div className="pt-4 flex justify-center items-center">
+              <Separator />
+            </div>
             {/* input workout sets and reps or time */}
             <div className={`${hasType ? "" : "hidden"}`}>
-              <Separator />
               <SetList type={formData.type} onChange={handleChange} />
             </div>
           </div>
