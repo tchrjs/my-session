@@ -1,7 +1,7 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 
 export default function SetList({ type, onChange = () => {} }) {
@@ -12,14 +12,15 @@ export default function SetList({ type, onChange = () => {} }) {
     let newSets = [...sets];
     newSets[index][name] = value;
     setSets(newSets);
-    onChange({ target: { name: "sets", value: sets } });
+    onChange({ target: { name: "sets", value: newSets } });
   };
 
   const createNewSet = () => {
     let newSet = { name: "", reps: 10, time: 1000 };
     if (sets.length > 0) Object.assign(newSet, sets[sets.length - 1]);
-    setSets([...sets, newSet]);
-    onChange({ target: { name: "sets", value: sets } });
+    let newSets = [...sets, newSet];
+    setSets(newSets);
+    onChange({ target: { name: "sets", value: newSets } });
   };
 
   const updateSetReps = (value, i) => {
@@ -49,6 +50,7 @@ export default function SetList({ type, onChange = () => {} }) {
                 placeholder={`set ${i + 1}`}
                 name="name"
                 onChange={(event) => handleChange(event, i)}
+                disabled={true}
               />
             </div>
             <Separator className="border-b-[1px] border-neutral-700" />
