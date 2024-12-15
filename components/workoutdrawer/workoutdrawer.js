@@ -58,7 +58,7 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
       <DrawerTrigger>
         <FiPlus className="scale-125" />
       </DrawerTrigger>
-      <DrawerContent className="h-[90%] bg-neutral-900 rounded-t-lg">
+      <DrawerContent className="h-[90%] bg-neutral-900 rounded-t-lg overflow-hidden">
         <DrawerHeader className="flex w-full justify-between items-center bg-neutral-800">
           <DrawerClose
             id="workout-drawer-close"
