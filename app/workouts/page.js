@@ -1,22 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LiaSearchSolid } from "react-icons/lia";
 
 import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 import WorkoutItem from "@/components/workoutitem/workoutitem";
+import { supabase } from "@/utils/database/client";
 
 export default function Page() {
   const [workouts, setWorkouts] = useState([]);
 
-  const handleWorkoutCreate = (event) => {
+  const handleWorkoutCreate = async (event) => {
     setWorkouts([...workouts, event]);
-    console.log(event);
+    await supabase.from("workouts").insert([event]).select();
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = async (workout, index) => {
     setWorkouts((prevWorkouts) => prevWorkouts.filter((_, i) => i !== index));
+    await supabase.from("workouts").delete().eq("name", workout.name);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data: workouts, error } = await supabase
+        .from("workouts")
+        .select("*");
+      if (error) {
+        console.error(error);
+      } else {
+        setWorkouts(workouts);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="flex flex-col gap-4">
@@ -46,7 +62,7 @@ export default function Page() {
             <WorkoutItem
               key={i}
               workout={workout}
-              onDelete={() => handleDelete(i)}
+              onDelete={() => handleDelete(workout, i)}
             />
           ))}
         </div>
