@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 
-export default function WorkoutItem({ workout }) {
+export default function WorkoutItem({ workout, onDelete = () => {} }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -39,7 +39,7 @@ export default function WorkoutItem({ workout }) {
                 Edit
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={onDelete}>
                 <FiTrash2 />
                 Delete
               </DropdownMenuItem>

@@ -14,6 +14,10 @@ export default function Page() {
     console.log(event);
   };
 
+  const handleDelete = (index) => {
+    setWorkouts((prevWorkouts) => prevWorkouts.filter((_, i) => i !== index));
+  };
+
   return (
     <div className="flex flex-col gap-4">
       {/* top bar */}
@@ -39,7 +43,11 @@ export default function Page() {
         {/* workouts */}
         <div className="w-full h-full flex flex-col items-center gap-2">
           {workouts.map((workout, i) => (
-            <WorkoutItem key={i} workout={workout} />
+            <WorkoutItem
+              key={i}
+              workout={workout}
+              onDelete={() => handleDelete(i)}
+            />
           ))}
         </div>
       </main>
