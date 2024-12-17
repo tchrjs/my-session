@@ -9,6 +9,7 @@ import { supabase } from "@/utils/database/client";
 
 export default function Page() {
   const [workouts, setWorkouts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleWorkoutCreate = async (event) => {
     setWorkouts([...workouts, event]);
@@ -29,6 +30,9 @@ export default function Page() {
         console.error(error);
       } else {
         setWorkouts(workouts);
+        setTimeout(() => {
+          setLoading(false);
+        }, 10);
       }
     };
     fetchData();
@@ -63,6 +67,9 @@ export default function Page() {
               key={i}
               workout={workout}
               onDelete={() => handleDelete(workout, i)}
+              style={{ transitionDelay: `${i * 0.1}s` }}
+              className={`w-full transition-opacity-transform duration-500
+                ${loading ? "opacity-0 -translate-y-2" : "opacity-100"} `}
             />
           ))}
         </div>

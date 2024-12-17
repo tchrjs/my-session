@@ -14,11 +14,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useState } from "react";
 
-export default function WorkoutItem({ workout, onDelete = () => {} }) {
+export default function WorkoutItem({
+  className,
+  style,
+  workout,
+  onDelete = () => {},
+}) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="w-full">
+    <div className={className} style={style}>
       <div className="w-full flex items-center px-4 py-2 bg-neutral-800">
         <div className="w-full flex justify-start">{workout.name}</div>
         <div className="flex gap-4">
