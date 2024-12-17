@@ -81,7 +81,7 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
         <form
           id="workout-form"
           onSubmit={handleFormSubmit}
-          className="overflow-y-scroll flex flex-col gap-2 py-2 px-2"
+          className="overflow-y-auto flex flex-col gap-2 py-2 px-2"
         >
           {/* input workout name */}
           <div>

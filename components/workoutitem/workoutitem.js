@@ -64,16 +64,18 @@ export default function WorkoutItem({ workout, onDelete = () => {} }) {
           isExpanded ? "" : "hidden"
         }`}
       >
-        {workout.sets.map((set, i) => (
-          <div key={i} className="w-full flex">
-            <div className="w-1/2">
-              {"set " + i + " - "}
-              {workout.type === "timed"
-                ? set.time / 1000 + " sec"
-                : set.reps + " reps"}
-            </div>
-          </div>
-        ))}
+        {workout.sets
+          ? workout.sets.map((set, i) => (
+              <div key={i} className="w-full flex">
+                <div className="w-1/2">
+                  {"set " + i + " - "}
+                  {workout.type === "timed"
+                    ? set.time / 1000 + " sec"
+                    : set.reps + " reps"}
+                </div>
+              </div>
+            ))
+          : "no sets"}
       </div>
     </div>
   );
