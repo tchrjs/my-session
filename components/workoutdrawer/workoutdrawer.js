@@ -24,8 +24,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { supabase } from "@/utils/database/client";
 
-export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
+export default function WorkoutDrawer() {
   const [hasType, setHasType] = useState(false);
   const [formData, setFormData] = useState({});
 
@@ -38,9 +39,9 @@ export default function WorkoutDrawer({ onWorkoutCreate = () => {} }) {
     if (name === "type") setHasType(value !== "");
   };
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    onWorkoutCreate(formData);
+    await supabase.from("workouts").insert([formData]).select();
     document.getElementById("workout-drawer-close").click();
   };
 

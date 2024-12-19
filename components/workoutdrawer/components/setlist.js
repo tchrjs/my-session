@@ -1,8 +1,8 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { useEffect, useState } from "react";
-import { FiMinus, FiPlus } from "react-icons/fi";
+import { Minus, Plus } from "lucide-react";
+import { useState } from "react";
 
 export default function SetList({ type, onChange = () => {} }) {
   const [sets, setSets] = useState([]);
@@ -33,7 +33,7 @@ export default function SetList({ type, onChange = () => {} }) {
         <div className="w-full">sets</div>
         <div className="w-full flex justify-end">
           <button type="button" onClick={createNewSet}>
-            <FiPlus className="scale-125" />
+            <Plus className="w-5 h-5" />
           </button>
         </div>
       </div>
@@ -66,14 +66,14 @@ export default function SetList({ type, onChange = () => {} }) {
                       updateSetReps(set.reps - 1 < 1 ? 1 : set.reps - 1, i)
                     }
                   >
-                    <FiMinus />
+                    <Minus className="w-4 h-4" />
                   </button>
                   <div>{set.reps}</div>
                   <button
                     type="button"
                     onClick={() => updateSetReps(set.reps + 1, i)}
                   >
-                    <FiPlus />
+                    <Plus className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -89,14 +89,14 @@ export default function SetList({ type, onChange = () => {} }) {
                       updateSetReps(set.reps - 1 < 1 ? 1 : set.reps - 1, i)
                     }
                   >
-                    <FiMinus />
+                    <Minus className="w-4 h-4" />
                   </button>
                   <div>{set.reps}</div>
                   <button
                     type="button"
                     onClick={() => updateSetReps(set.reps + 1, i)}
                   >
-                    <FiPlus />
+                    <Plus className="w-4 h-4" />
                   </button>
                 </div>
               </div>

@@ -1,10 +1,5 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
-
-import { FaEllipsisH } from "react-icons/fa";
-import { FiChevronDown, FiEdit2, FiTrash2 } from "react-icons/fi";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,40 +7,43 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { Separator } from "@/components/ui/separator";
 
-export default function WorkoutItem({
-  className,
-  style,
-  workout,
-  onDelete = () => {},
-}) {
+import { useState } from "react";
+import { ChevronDown, Edit2, Ellipsis, Trash2 } from "lucide-react";
+import { supabase } from "@/utils/database/client";
+
+export default function WorkoutItem({ className, style, workout }) {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleDelete = async () => {
+    await supabase.from("workouts").delete().eq("name", workout.name);
+  };
 
   return (
     <div className={className} style={style}>
       <div className="w-full flex items-center px-4 py-2 bg-neutral-800">
         <div className="w-full flex justify-start">{workout.name}</div>
-        <div className="flex gap-4">
+        <div className="flex gap-2">
           <button type="button" onClick={() => setIsExpanded(!isExpanded)}>
-            <FiChevronDown
+            <ChevronDown
               className={`${
                 isExpanded ? "-rotate-180" : ""
-              } transition-transform scale-125`}
+              } transition-transform w-5 h-5`}
             />
           </button>
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <FaEllipsisH />
+              <Ellipsis className="w-5 h-5" />
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-neutral-900">
               <DropdownMenuItem>
-                <FiEdit2 />
+                <Edit2 />
                 Edit
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={onDelete}>
-                <FiTrash2 />
+              <DropdownMenuItem onClick={handleDelete}>
+                <Trash2 />
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
