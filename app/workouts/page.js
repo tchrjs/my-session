@@ -6,7 +6,7 @@ import { supabase } from "@/utils/database/client";
 
 export default async function Page() {
   // Retrieve data from database.
-  const { data: workouts } = await supabase.from("workouts").select("*");
+  const { data: workouts } = await supabase.from("workouts").select();
 
   return (
     <main className="">
