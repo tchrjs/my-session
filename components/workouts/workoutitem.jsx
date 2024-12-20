@@ -12,10 +12,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
-import { supabase } from "@/utils/database/client";
+import { createClient } from "@/utils/supabase/client";
 
 export default function WorkoutItem({ workout, ...props }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const supabase = createClient();
   const router = useRouter();
 
   const handleDelete = async () => {

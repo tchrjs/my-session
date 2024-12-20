@@ -12,12 +12,13 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/utils/database/client";
+import { createClient } from "@/utils/supabase/client";
 import WorkoutSets from "./workoutsets";
 
 export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
   const [hasType, setHasType] = useState(false);
   const [formData, setFormData] = useState({});
+  const supabase = createClient();
   const router = useRouter();
 
   const handleChange = (event) => {
