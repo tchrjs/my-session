@@ -1,10 +1,11 @@
+import { Search } from "lucide-react";
 import TopNav from "@/components/topnav/topnav";
 import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 import WorkoutList from "@/components/workouts/workoutlist";
 import { supabase } from "@/utils/database/client";
-import { Search } from "lucide-react";
 
 export default async function Page() {
+  // Retrieve data from database.
   const { data: workouts } = await supabase.from("workouts").select("*");
 
   return (
@@ -17,7 +18,7 @@ export default async function Page() {
         </div>
       </TopNav>
       <div>
-        <div className="relative px-2 m-4">
+        <div className="relative m-4">
           <input
             className="w-full px-8 py-1 rounded-lg bg-neutral-900"
             placeholder="search"
@@ -26,7 +27,7 @@ export default async function Page() {
             <Search className="w-4 h-4 text-neutral-400" />
           </div>
         </div>
-        <WorkoutList initialWorkouts={workouts} />
+        <WorkoutList workouts={workouts} />
       </div>
     </main>
   );

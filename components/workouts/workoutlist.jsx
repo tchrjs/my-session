@@ -1,10 +1,9 @@
 "use client";
 
-import WorkoutItem from "./workoutitem";
 import React, { useEffect, useState } from "react";
+import WorkoutItem from "./workoutitem";
 
-export default function WorkoutList({ initialWorkouts }) {
-  const [workouts, setWorkouts] = useState(initialWorkouts);
+export default function WorkoutList({ workouts }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -12,7 +11,7 @@ export default function WorkoutList({ initialWorkouts }) {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-2">
       {workouts.map((workout, i) => (
         <WorkoutItem
           key={i}

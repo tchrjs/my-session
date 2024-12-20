@@ -1,10 +1,10 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
-import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
+import { Minus, Plus } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
-export default function SetList({ type, onChange = () => {} }) {
+export default function WorkoutSets({ type, onChange = () => {} }) {
   const [sets, setSets] = useState([]);
 
   const handleChange = (event, index) => {
@@ -54,50 +54,49 @@ export default function SetList({ type, onChange = () => {} }) {
               />
             </div>
             <Separator className="border-b-[1px] border-neutral-700" />
-
-            {/* weighted inputs */}
-            <div className={`w-full ${type == "weighted" ? "" : "hidden"}`}>
-              <div className="w-full flex p-2">
-                <div className="w-4/6">Reps</div>
-                <div className="w-2/6 flex justify-between items-center">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      updateSetReps(set.reps - 1 < 1 ? 1 : set.reps - 1, i)
-                    }
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <div>{set.reps}</div>
-                  <button
-                    type="button"
-                    onClick={() => updateSetReps(set.reps + 1, i)}
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
+            <div>
+              <div className={`w-full ${type == "weighted" ? "" : "hidden"}`}>
+                <div className="w-full flex p-2">
+                  <div className="w-4/6">Reps</div>
+                  <div className="w-2/6 flex justify-between items-center">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        updateSetReps(set.reps - 1 < 1 ? 1 : set.reps - 1, i)
+                      }
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <div>{set.reps}</div>
+                    <button
+                      type="button"
+                      onClick={() => updateSetReps(set.reps + 1, i)}
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            {/* bodyweighted inputs */}
-            <div className={`${type == "bodyweighted" ? "" : "hidden"}`}>
-              <div className="w-full flex p-2">
-                <div className="w-4/6">Reps</div>
-                <div className="w-2/6 flex justify-between items-center">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      updateSetReps(set.reps - 1 < 1 ? 1 : set.reps - 1, i)
-                    }
-                  >
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <div>{set.reps}</div>
-                  <button
-                    type="button"
-                    onClick={() => updateSetReps(set.reps + 1, i)}
-                  >
-                    <Plus className="w-4 h-4" />
-                  </button>
+              <div className={`${type == "bodyweighted" ? "" : "hidden"}`}>
+                <div className="w-full flex p-2">
+                  <div className="w-4/6">Reps</div>
+                  <div className="w-2/6 flex justify-between items-center">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        updateSetReps(set.reps - 1 < 1 ? 1 : set.reps - 1, i)
+                      }
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <div>{set.reps}</div>
+                    <button
+                      type="button"
+                      onClick={() => updateSetReps(set.reps + 1, i)}
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

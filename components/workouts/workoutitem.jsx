@@ -1,5 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ChevronDown, Edit2, Ellipsis, Trash2 } from "lucide-react";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,20 +12,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
-
-import { useState } from "react";
-import { ChevronDown, Edit2, Ellipsis, Trash2 } from "lucide-react";
 import { supabase } from "@/utils/database/client";
 
-export default function WorkoutItem({ className, style, workout }) {
+export default function WorkoutItem({ workout, ...props }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
     await supabase.from("workouts").delete().eq("name", workout.name);
+    router.refresh();
   };
 
   return (
-    <div className={className} style={style}>
+    <div className={props.className} style={props.style}>
       <div className="w-full flex items-center px-4 py-2 bg-neutral-800">
         <div className="w-full flex justify-start">{workout.name}</div>
         <div className="flex gap-2">
