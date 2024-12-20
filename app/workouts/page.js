@@ -2,10 +2,11 @@ import { Search } from "lucide-react";
 import TopNav from "@/components/topnav/topnav";
 import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 import WorkoutList from "@/components/workouts/workoutlist";
-import { supabase } from "@/utils/database/client";
+import { createClient } from "@/utils/supabase/server";
 
 export default async function Page() {
   // Retrieve data from database.
+  const supabase = await createClient();
   const { data: workouts } = await supabase.from("workouts").select();
 
   return (
