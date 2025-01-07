@@ -8,3 +8,5 @@ export const PageContent = React.forwardRef(
     </main>
   )
 );
+
+PageContent.displayName = "PageContent";
