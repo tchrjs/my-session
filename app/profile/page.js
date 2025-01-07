@@ -1,4 +1,4 @@
-import { PageContent } from "@/components/pagecontent/PageContent";
+import { PageContent } from "@/components/pagecontent/pagecontent";
 import TopNav from "@/components/topnav/topnav";
 
 export default function Page() {
