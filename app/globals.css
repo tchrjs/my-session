@@ -71,12 +71,6 @@
   footer {
     @apply bg-background text-foreground;
   }
-  main {
-    @apply bg-background;
-  }
-  html {
-    @apply bg-background;
-  }
 }
 
 @font-face {
