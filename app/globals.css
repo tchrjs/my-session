@@ -2,24 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bar-background: #212121;
-  --bar-foreground: #f7f7f7;
-}
-
-nav,
-footer {
-  color: var(--bar-foreground);
-  background: var(--bar-background);
-  font-family: Raleway;
-}
-
-main {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Raleway;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -81,6 +63,12 @@ main {
     @apply border-border;
   }
   body {
+    @apply bg-background text-foreground;
+  }
+  nav {
+    @apply bg-background text-foreground;
+  }
+  footer {
     @apply bg-background text-foreground;
   }
 }

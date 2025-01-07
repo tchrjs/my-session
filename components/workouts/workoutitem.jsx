@@ -14,7 +14,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { createClient } from "@/utils/supabase/client";
 
-export default function WorkoutItem({ workout, ...props }) {
+export default function WorkoutItem({ workout }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const supabase = createClient();
   const router = useRouter();
@@ -25,7 +25,7 @@ export default function WorkoutItem({ workout, ...props }) {
   };
 
   return (
-    <div className={props.className} style={props.style}>
+    <div className="w-full">
       <div className="w-full flex items-center px-4 py-2 bg-neutral-800">
         <div className="w-full flex justify-start">{workout.name}</div>
         <div className="flex gap-2">

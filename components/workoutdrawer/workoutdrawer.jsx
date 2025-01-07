@@ -11,6 +11,8 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import WorkoutForm from "./workoutform";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 export default function WorkoutDrawer() {
   const handleFormSubmit = async () => {
@@ -22,21 +24,22 @@ export default function WorkoutDrawer() {
       <DrawerTrigger>
         <Plus className="w-4 h-4" />
       </DrawerTrigger>
-      <DrawerContent className="h-[90%] rounded-t-lg overflow-hidden bg-neutral-900 ">
-        <DrawerHeader className="flex justify-between items-center bg-neutral-800">
+      <DrawerContent className="h-[90%] rounded-t-lg overflow-hidden">
+        <DrawerHeader className="flex justify-between items-center border-b-[1px]">
           <DrawerClose id="workout-drawer-close" className="w-1/3">
             <X className="w-4 h-4" />
           </DrawerClose>
           <DrawerTitle className="w-1/3 flex justify-center">
             Workout
           </DrawerTitle>
-          <button
+          <Button
             type="submit"
+            variant="Ghost"
             form="workout-form"
-            className="w-1/3 flex justify-end text-blue-400"
+            className="w-1/3 flex justify-end text-blue-400 p-0"
           >
             Create
-          </button>
+          </Button>
         </DrawerHeader>
         <WorkoutForm id="workout-form" onFormSubmit={handleFormSubmit} />
       </DrawerContent>

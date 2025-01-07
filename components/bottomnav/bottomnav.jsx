@@ -4,8 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 // svgs
-import { BsFillClipboard2DataFill } from "react-icons/bs";
-import { FaDumbbell, FaWalking } from "react-icons/fa";
+import { FaDumbbell, FaWalking, FaRegUserCircle } from "react-icons/fa";
 import { RiCalendarTodoFill } from "react-icons/ri";
 
 const PageLink = ({ ...props }) => (
@@ -25,7 +24,7 @@ export default function BottomNav() {
   const currentPath = usePathname();
 
   return (
-    <nav className="fixed bottom-0 w-full h-20 flex justify-center items-center p-4">
+    <nav className="fixed bottom-0 w-full h-20 flex justify-center items-center p-4 border-t-[1px] backdrop-blur-sm">
       <div className="w-full h-full flex justify-around items-start">
         <PageLink
           href={"/"}
@@ -46,9 +45,9 @@ export default function BottomNav() {
           currentPath={currentPath}
         />
         <PageLink
-          href={"/summary"}
-          icon={<BsFillClipboard2DataFill />}
-          title="summary"
+          href={"/profile"}
+          icon={<FaRegUserCircle />}
+          title="profile"
           currentPath={currentPath}
         />
       </div>
