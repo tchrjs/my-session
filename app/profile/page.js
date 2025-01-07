@@ -8,6 +8,7 @@ export default function Page() {
         <div className="w-1/3 flex justify-center">Profile</div>
         <div className="w-1/3 flex justify-end"></div>
       </TopNav>
+      <PageContent></PageContent>
     </div>
   );
 }

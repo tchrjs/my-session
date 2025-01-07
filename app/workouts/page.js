@@ -1,3 +1,4 @@
+import { PageContent } from "@/components/pagecontent/pagecontent";
 import TopNav from "@/components/topnav/topnav";
 import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 import WorkoutList from "@/components/workouts/workoutlist";
@@ -9,7 +10,7 @@ export default async function Page() {
   const { data: workouts } = await supabase.from("workouts").select();
 
   return (
-    <main className="">
+    <div className="">
       <TopNav>
         <div className="w-1/3 flex justify-start"></div>
         <div className="w-1/3 flex justify-center">Workouts</div>
@@ -17,9 +18,9 @@ export default async function Page() {
           <WorkoutDrawer />
         </div>
       </TopNav>
-      <div>
+      <PageContent>
         <WorkoutList workouts={workouts} />
-      </div>
-    </main>
+      </PageContent>
+    </div>
   );
 }

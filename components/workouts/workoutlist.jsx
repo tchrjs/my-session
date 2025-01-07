@@ -13,7 +13,7 @@ export default function WorkoutList({ workouts }) {
 
   return (
     <div className={`${loading ? "opacity-0" : ""} transition-opacity`}>
-      <div className="flex relative mx-2 my-4">
+      <div className="flex relative p-4">
         <Input
           type="search"
           placeholder="Search"

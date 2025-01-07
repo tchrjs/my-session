@@ -16,6 +16,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import TopNav from "@/components/topnav/topnav";
+import { PageContent } from "@/components/pagecontent/PageContent";
 
 export default function Page() {
   const [routines, setRoutines] = useState([
@@ -24,17 +25,14 @@ export default function Page() {
   ]);
 
   return (
-    <div className="flex flex-col gap-4">
-      {/* top bar */}
+    <div>
       <TopNav>
         <div className="w-1/3 flex justify-start"></div>
         <div className="w-1/3 flex justify-center">Routines</div>
         <div className="w-1/3 flex justify-end"></div>
       </TopNav>
-      {/* routine content */}
-      <main className="w-full h-full flex flex-col gap-4">
-        {/* routines */}
-        <div className="w-full h-full flex flex-col items-center gap-4 px-4">
+      <PageContent>
+        <div className="w-full h-full flex flex-col items-center gap-4 p-4">
           {routines.map((routine, i) => (
             <div key={i} className="w-full">
               <Drawer direction="right">
@@ -59,7 +57,7 @@ export default function Page() {
             </div>
           ))}
         </div>
-      </main>
+      </PageContent>
     </div>
   );
 }

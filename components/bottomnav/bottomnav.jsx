@@ -24,7 +24,7 @@ export default function BottomNav() {
   const currentPath = usePathname();
 
   return (
-    <nav className="fixed bottom-0 w-full h-20 flex justify-center items-center p-4 border-t-[1px] backdrop-blur-sm">
+    <nav className="fixed bottom-0 w-full h-24 flex justify-center items-center p-4 border-t-[1px] backdrop-blur-sm">
       <div className="w-full h-full flex justify-around items-start">
         <PageLink
           href={"/"}
