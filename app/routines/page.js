@@ -16,7 +16,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import TopNav from "@/components/topnav/topnav";
-import { PageContent } from "@/components/pagecontent/PageContent";
+import { PageContent } from "@/components/pagecontent/pagecontent";
 
 export default function Page() {
   const [routines, setRoutines] = useState([
