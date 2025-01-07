@@ -72,10 +72,10 @@
     @apply bg-background text-foreground;
   }
   main {
-    @apply bg-background text-foreground;
+    @apply bg-background;
   }
   html {
-    @apply bg-background text-foreground;
+    @apply bg-background;
   }
 }
 
