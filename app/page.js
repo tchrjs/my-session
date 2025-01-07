@@ -1,3 +1,4 @@
+import { PageContent } from "@/components/pagecontent/PageContent";
 import TopNav from "@/components/topnav/topnav";
 
 export default function Home() {
