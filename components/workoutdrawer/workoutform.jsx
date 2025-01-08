@@ -40,7 +40,13 @@ export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
         <div>
           <div className="w-full px-2 py-1 text-sm">Name</div>
           <div className="relative">
-            <Input name="name" onChange={handleChange} required={true} />
+            <Input
+              name="name"
+              onChange={handleChange}
+              required={true}
+              placeholder="Enter workout name"
+              className="text-sm"
+            />
           </div>
         </div>
         <div>
