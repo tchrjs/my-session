@@ -77,7 +77,6 @@ export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
 
       <div className="border-t-[1px] min-h-24 mb-11 p-4">
         <Button
-          form="workout-form"
           type="submit"
           variant="default"
           className="bg-blue-500 text-white w-full"
