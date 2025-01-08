@@ -1,11 +1,12 @@
 "use client";
 
-import { Plus, X } from "lucide-react";
+import { ChevronLeft, Plus } from "lucide-react";
 
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -19,28 +20,28 @@ export default function WorkoutDrawer() {
   };
 
   return (
-    <Drawer direction="bottom">
+    <Drawer direction="right">
       <DrawerTrigger>
         <Plus className="w-4 h-4" />
       </DrawerTrigger>
-      <DrawerContent className="h-[90%] rounded-t-lg overflow-hidden">
-        <DrawerHeader className="flex justify-between items-center border-b-[1px]">
-          <DrawerClose id="workout-drawer-close" className="w-1/3">
-            <X className="w-4 h-4" />
+      <DrawerContent className="h-full">
+        <DrawerHeader className="h-11 flex items-center p-2 border-b-[1px]">
+          <DrawerClose id="workout-drawer-close">
+            <ChevronLeft />
           </DrawerClose>
-          <DrawerTitle className="w-1/3 flex justify-center">
-            Workout
-          </DrawerTitle>
+          <DrawerTitle>Create new workout</DrawerTitle>
+        </DrawerHeader>
+        <WorkoutForm id="workout-form" onFormSubmit={handleFormSubmit} />
+        <DrawerFooter className="border-t-[1px] h-24">
           <Button
-            type="submit"
-            variant="Ghost"
             form="workout-form"
-            className="w-1/3 flex justify-end text-blue-400 p-0"
+            type="submit"
+            variant="default"
+            className="bg-blue-500 text-white"
           >
             Create
           </Button>
-        </DrawerHeader>
-        <WorkoutForm id="workout-form" onFormSubmit={handleFormSubmit} />
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );

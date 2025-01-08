@@ -12,7 +12,7 @@ export function PageContent({ ...props }) {
 
   return (
     <main
-      className={`${cn("mt-10 mb-24", props.className)} ${
+      className={`${cn("mt-11 mb-24", props.className)} ${
         loading ? "opacity-0" : ""
       } transition-opacity`}
       {...props}
