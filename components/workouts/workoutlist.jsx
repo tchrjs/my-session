@@ -1,18 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import WorkoutItem from "./workoutitem";
 import { Input } from "../ui/input";
 
 export default function WorkoutList({ workouts }) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (loading) setLoading(false);
-  }, [loading]);
-
   return (
-    <div className={`${loading ? "opacity-0" : ""} transition-opacity`}>
+    <div>
       <div className="flex relative p-4">
         <Input
           type="search"
