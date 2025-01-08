@@ -3,6 +3,7 @@
 import {
   Drawer,
   DrawerContent,
+  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -10,6 +11,7 @@ import {
 import WorkoutForm from "./workoutform";
 import { ChevronLeft, Plus } from "lucide-react";
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 export default function WorkoutDrawer() {
   const [open, setOpen] = useState(false);
@@ -20,11 +22,21 @@ export default function WorkoutDrawer() {
         <Plus className="w-4 h-4" onClick={() => setOpen(true)} />
       </DrawerTrigger>
       <DrawerContent className="h-full">
-        <DrawerHeader className="h-11 flex items-center p-4 border-b-[1px]">
+        <DrawerHeader className="h-12 flex items-center p-4 border-b-[1px]">
           <ChevronLeft onClick={() => setOpen(false)} />
           <DrawerTitle>Create new workout</DrawerTitle>
         </DrawerHeader>
-        <WorkoutForm onFormSubmit={() => setOpen(true)} />
+        <WorkoutForm id="workout-form" onFormSubmit={() => setOpen(true)} />
+        <DrawerFooter className="border-t-[1px] p-4 min-h-24">
+          <Button
+            form="workout-form"
+            type="submit"
+            variant="default"
+            className="bg-blue-500 text-white w-full"
+          >
+            Create
+          </Button>
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );

@@ -1,8 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
 import {
   Select,
   SelectContent,
@@ -13,7 +10,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { createClient } from "@/utils/supabase/client";
 import WorkoutSets from "./workoutsets";
-import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
   const [hasType, setHasType] = useState(false);
@@ -37,12 +35,8 @@ export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
   };
 
   return (
-    <form
-      id={props.id}
-      onSubmit={handleFormSubmit}
-      className="flex flex-col min-h-full overflow-y-auto"
-    >
-      <div className="flex flex-col flex-grow gap-4 px-4 p-2">
+    <form id={props.id} onSubmit={handleFormSubmit} className="overflow-y-auto">
+      <div className="flex flex-col gap-4 px-4 p-2">
         <div>
           <div className="w-full px-2 py-1 text-sm">Name</div>
           <div className="relative">
@@ -73,16 +67,6 @@ export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
         <div className={` ${hasType ? "" : "hidden"}`}>
           <WorkoutSets type={formData.type} onChange={handleChange} />
         </div>
-      </div>
-
-      <div className="border-t-[1px] min-h-24 mb-11 p-4">
-        <Button
-          type="submit"
-          variant="default"
-          className="bg-blue-500 text-white w-full"
-        >
-          Create
-        </Button>
       </div>
     </form>
   );
