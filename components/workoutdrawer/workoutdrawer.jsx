@@ -26,7 +26,7 @@ export default function WorkoutDrawer() {
           <ChevronLeft onClick={() => setOpen(false)} />
           <DrawerTitle>Create new workout</DrawerTitle>
         </DrawerHeader>
-        <WorkoutForm id="workout-form" onFormSubmit={() => setOpen(true)} />
+        <WorkoutForm id="workout-form" onFormSubmit={() => setOpen(false)} />
         <DrawerFooter className="border-t-[1px] p-4 min-h-24">
           <Button
             form="workout-form"

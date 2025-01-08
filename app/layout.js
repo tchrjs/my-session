@@ -1,4 +1,4 @@
-import BottomNav from "@/components/bottomnav/bottomnav";
+import BottomNav from "@/components/layout/bottomnav";
 import "./globals.css";
 
 export const metadata = {

@@ -1,5 +1,5 @@
-import { PageContent } from "@/components/pagecontent/pagecontent";
-import TopNav from "@/components/topnav/topnav";
+import { PageContent } from "@/components/layout/pagecontent";
+import TopNav from "@/components/layout/topnav";
 import WorkoutDrawer from "@/components/workoutdrawer/workoutdrawer";
 import WorkoutList from "@/components/workouts/workoutlist";
 import { createClient } from "@/utils/supabase/server";
