@@ -23,7 +23,7 @@ export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
         <Separator />
         <div className="w-full flex justify-start items-center">
           <Tabs defaultValue="general" className="w-full">
-            <TabsList className="bg-transparent font-normal p-2 mb-4">
+            <TabsList className="bg-transparent font-normal py-2 mb-4">
               <TabsTrigger value="general">General</TabsTrigger>
               <TabsTrigger value="goals">Goals</TabsTrigger>
               <TabsTrigger value="appearance">Appearance</TabsTrigger>
