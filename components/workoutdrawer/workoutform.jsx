@@ -1,77 +1,37 @@
 "use client";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/utils/supabase/client";
-import WorkoutSets from "./workoutsets";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { Separator } from "../ui/separator";
+import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
+import GeneralContent from "./tabcontents/generalcontent";
+import GoalsContent from "./tabcontents/goalscontent";
+import AppearanceContent from "./tabcontents/appearancecontent";
 
 export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
-  const [hasType, setHasType] = useState(false);
-  const [formData, setFormData] = useState({});
-  const supabase = createClient();
-  const router = useRouter();
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    await supabase.from("workouts").insert([formData]).select();
-    router.refresh();
-    onFormSubmit();
-  };
-
   return (
-    <form id={props.id} onSubmit={handleFormSubmit} className="overflow-y-auto">
-      <div className="flex flex-col gap-4 px-4 p-2">
-        <div>
-          <div className="w-full px-2 py-1 text-sm">Name</div>
-          <div className="relative">
-            <Input
-              name="name"
-              onChange={handleChange}
-              required={true}
-              placeholder="Enter workout name"
-              className="text-sm"
-            />
-          </div>
-        </div>
-        <div>
-          <div className="w-full px-2 py-1 text-sm">Type</div>
-          <Select
-            onValueChange={(value) => {
-              handleChange({
-                target: { name: "type", value: value },
-              });
-              setHasType(value !== "");
-            }}
+    <form id={props.id} onSubmit={onFormSubmit} className="overflow-y-auto">
+      <div className="flex flex-col gap-4 px-4">
+        <div className="py-2">
+          <label className="w-full pl-2 text-sm">Name</label>
+          <Input
+            name="name"
             required={true}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="select workout type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="weighted">Weighted</SelectItem>
-              <SelectItem value="bodyweighted">Body-Weighted</SelectItem>
-              <SelectItem value="timed">Timed</SelectItem>
-            </SelectContent>
-          </Select>
+            placeholder="Enter workout name"
+            className="text-sm"
+          />
         </div>
-        <div className={` ${hasType ? "" : "hidden"}`}>
-          <WorkoutSets type={formData.type} onChange={handleChange} />
+        <Separator />
+        <div className="w-full flex justify-start items-center">
+          <Tabs defaultValue="general" className="w-full">
+            <TabsList className="bg-transparent font-normal p-2 mb-4">
+              <TabsTrigger value="general">General</TabsTrigger>
+              <TabsTrigger value="goals">Goals</TabsTrigger>
+              <TabsTrigger value="appearance">Appearance</TabsTrigger>
+            </TabsList>
+            <GeneralContent value="general" />
+            <GoalsContent value="goals" />
+            <AppearanceContent value="appearance" />
+          </Tabs>
         </div>
       </div>
     </form>
