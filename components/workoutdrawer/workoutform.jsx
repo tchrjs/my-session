@@ -6,20 +6,13 @@ import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
 import GeneralContent from "./tabcontents/generalcontent";
 import GoalsContent from "./tabcontents/goalscontent";
 import AppearanceContent from "./tabcontents/appearancecontent";
+import { cn } from "@/lib/utils";
 
 export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
   return (
     <form id={props.id} onSubmit={onFormSubmit} className="overflow-y-auto">
       <div className="flex flex-col gap-4 px-4">
-        <div className="py-2">
-          <label className="w-full pl-2 text-sm">Name</label>
-          <Input
-            name="name"
-            required={true}
-            placeholder="Enter workout name"
-            className="text-sm"
-          />
-        </div>
+        <WorkoutNameInput className="pt-2" />
         <Separator />
         <div className="w-full flex justify-start items-center">
           <Tabs defaultValue="general" className="w-full">
@@ -37,3 +30,17 @@ export default function WorkoutForm({ onFormSubmit = () => {}, ...props }) {
     </form>
   );
 }
+
+const WorkoutNameInput = ({ ...props }) => {
+  return (
+    <div className={cn("flex flex-col", props.className)}>
+      <label className="text-sm pb-1">Workout Name</label>
+      <Input
+        name="name"
+        required={true}
+        placeholder="Enter workout name"
+        className="text-sm"
+      />
+    </div>
+  );
+};
