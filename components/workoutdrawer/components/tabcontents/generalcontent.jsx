@@ -67,7 +67,7 @@ const RestInput = () => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <div className="flex border-[1px] rounded-md">
         <div className="w-5/6 flex flex-col justify-center items-start p-4">
           <div className="text-sm">Enable Rest</div>

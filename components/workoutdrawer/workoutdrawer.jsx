@@ -8,7 +8,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import WorkoutForm from "./workoutform";
+import WorkoutForm from "./components/workoutform";
 import { ChevronLeft, Plus } from "lucide-react";
 import { useState } from "react";
 import { Button } from "../ui/button";

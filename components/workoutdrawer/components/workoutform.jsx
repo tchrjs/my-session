@@ -1,8 +1,8 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { Separator } from "../ui/separator";
-import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
+import { Separator } from "../../ui/separator";
+import { Tabs, TabsList, TabsTrigger } from "../../ui/tabs";
 import GeneralContent from "./tabcontents/generalcontent";
 import GoalsContent from "./tabcontents/goalscontent";
 import AppearanceContent from "./tabcontents/appearancecontent";
